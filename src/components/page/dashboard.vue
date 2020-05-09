@@ -54,19 +54,8 @@
         <el-row :gutter="10" type="flex" justify="center" style="margin:15px auto">
             <el-col :span="16">
                 <el-row :gutter="10" type="flex" justify="center" >
-                    <el-col :span="24" class="grid-content">
-
-                         <el-row :gutter="10" type="flex" justify="center" style="margin:15px auto">
-                             <el-col :span="8">
-                                待审批
-                             </el-col>
-                             <el-col :span="8">
-                                已审批
-                             </el-col>
-                             <el-col :span="8">
-                                审批驳回
-                             </el-col>
-                         </el-row>
+                    <el-col :span="24">
+                                <v-message1></v-message1>           
                     </el-col>
                 </el-row>
                     
@@ -85,13 +74,15 @@
 
 <script>
     import vCalendar from '../functionalComponent/calendar.vue'
+    import vMessage1 from '../functionalComponent/tabMessage1.vue'
 
     // import VueCal from 'vue-cal'
     // import 'vue-cal/dist/vuecal.css'
 
     export default {
         components: {
-            vCalendar
+            vCalendar,
+            vMessage1
             //VueCal
         }
     };
