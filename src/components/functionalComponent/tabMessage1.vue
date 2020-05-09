@@ -31,17 +31,25 @@
 
                 <el-tab-pane :label="`发起审批`" name="third">
                     <template v-if="message === 'third'">
-                            <el-table-column>
-                                <h1>在这里发起审批</h1>
+                            <el-table-column prop="date" width="180" label="发送日期"></el-table-column>
+                            <el-table-column label="标题">
+                                <template v-slot="scope">
+                                    <span class="message-title">{{scope.row.title}}</span>
+                                </template>
                             </el-table-column>
+                            <el-table-column prop="author" width="180" label="发送人"></el-table-column>
                     </template>
                 </el-tab-pane>
 
                 <el-tab-pane :label="`抄送`" name="forth">
                     <template v-if="message === 'forth'">
-                            <el-table-column>
-                                <h1>在这里进行抄送</h1>
+                            <el-table-column prop="date" width="180" label="发送日期"></el-table-column>
+                            <el-table-column label="标题">
+                                <template v-slot="scope">
+                                    <span class="message-title">{{scope.row.title}}</span>
+                                </template>
                             </el-table-column>
+                            <el-table-column prop="author" width="180" label="发送人"></el-table-column>
                     </template>
                 </el-tab-pane>
 

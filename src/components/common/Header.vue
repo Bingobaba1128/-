@@ -1,8 +1,29 @@
 <template>
     <div class="header">
-        <div class="collapse-btn" @click="collapseChage">
-            <i v-if="!collapse" class="el-icon-s-unfold"></i>
-            <i v-else class="el-icon-s-fold"></i>
+        <div class="header-left">
+            <div class="collapse-btn" @click="collapseChage">
+                <i v-if="!collapse" class="el-icon-s-unfold"></i>         
+                <i v-else class="el-icon-s-fold"></i>  
+            </div>
+            <div class="root system-list">
+                面料系统
+            </div>
+            <div class="expanded" v-show="showSublist">
+                <div class="system-list">
+                    成衣系统
+                </div>
+                <div class="system-list">
+                    服装设计系统
+                </div>
+                <div class="system-list">
+                    人资管理系统
+                </div>
+                <div class="system-list">
+                    财务管理
+                </div>
+            </div>
+            
+            
         </div>
 
         <div class="header-right">
@@ -42,7 +63,8 @@
         data() {
             return {
                 collapse: false,
-                name: 'Admin'
+                name: 'Admin',
+                showSublist: false
             };
         },
 
@@ -50,6 +72,7 @@
              collapseChage() {
                 this.collapse = !this.collapse;
                 bus.$emit('collapse', this.collapse);
+                this.showSublist = !this.showSublist;
             }
          }
     }
@@ -64,11 +87,15 @@
         font-size: 22px;
         color: #fff;
     }
-    .collapse-btn {
+    .header-left {
         float: left;
-        padding: 0 21px;
+        display: flex;
+        padding-left:20px;
+    }
+    .collapse-btn {
         cursor: pointer;
         line-height: 70px;
+        order:2
     }
     .header .logo {
         float: left;
@@ -82,6 +109,19 @@
         display: flex;
         height: 70px;
         align-items: center;
+    }
+
+    .expanded{
+        margin-left: -20px;
+        order:3;
+        display: flex
+    }
+    .root {
+        order: 1;
+    }
+
+    .system-list {
+        padding:20px 6px;
     }
 
     .btn-message {
@@ -121,7 +161,7 @@
         margin: 0 10px;
     }
 
-    .el-icon-s-unfold {
-        transform: translateX(250px);
+    .el-icon-s-fold {
+        transform: translateX(500px)
     }
 </style>
