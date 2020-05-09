@@ -52,20 +52,12 @@
 
         <!-- 第二部分 -->
         <el-row :gutter="10" type="flex" justify="center" style="margin:15px auto">
-            <el-col :span="16">
+            <el-col :span="24">
                 <el-row :gutter="10" type="flex" justify="center" >
                     <el-col :span="24">
-                                <v-message1></v-message1>           
+                            <v-message1></v-message1>           
                     </el-col>
                 </el-row>
-                    
-
-            </el-col>
-
-            <el-col :span="8">
-                <div class="grid-content">
-                <p>在这里放流程引导</p>
-                </div>
             </el-col>
         </el-row>
                 
