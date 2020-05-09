@@ -30,12 +30,14 @@
 </template>
 
 <script>
+import {doLogin} from '../../api/login.js'
+
 export default {
     data: function() {
         return {
             param: {
-                username: 'shenzhen',
-                password: '1128',
+                username: 'dengke',
+                password: '123',
             },
             rules: {
                 username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
@@ -45,17 +47,33 @@ export default {
     },
     methods: {
         submitForm() {
-            // 获取ref注册的引用信息
-            this.$refs.login.validate(valid => {
-                if (valid) {
-                    this.$message.success('登录成功');
-                    localStorage.setItem('ms_username', this.param.username);
-                    this.$router.push('/');
-                } else {
-                    this.$message.error('请输入账号和密码');
-                    return false;
-                }
-            });
+                window.console.log('im in ')
+
+
+            // // 获取ref注册的引用信息
+            // this.$refs.login.validate(valid => {
+            //     if (valid) {
+            //         this.$message.success('登录成功');
+            //         localStorage.setItem('ms_username', this.param.username);
+            //         this.$router.push('/');
+            //     } else {
+            //         this.$message.error('请输入账号和密码');
+            //         return false;
+            //     }
+            // });
+            doLogin(this.username, this.password).then(res => {
+                window.console.log(res)
+            if (res.data.resultCode === 200) {
+                const token = 'token'
+                // Message.success('登录成功')
+                // 存储token到浏览器
+                localStorage.setItem('eleToken', token)
+                this.$router.push('/')
+            } else {
+                // Message.error(res.data.resultMsg)
+                // console.log('错误')
+            }
+          })
         },
     },
 };

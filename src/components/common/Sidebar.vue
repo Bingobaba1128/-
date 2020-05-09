@@ -78,62 +78,70 @@
     export default {
         data() {
             return {
+                saleMenu:[
+                    {
+                        icon: 'el-icon-rank',
+                        index: 'saleManagement',
+                        title: '销售管理',
+                        role: ['erp_v:jczl'],
+                        subs: [
+                            {
+                                index: 'orderInform',
+                                title: '预期订单通知'
+                            },
+                            {
+                                index: 'applyForm',
+                                title: '计板移仓申请单'
+                            },
+                            {
+                                index: 'saleStats',
+                                title: '销售统计'
+                            }
+                        ]
+                    }
+                ],
+                productMenu:[
+                    {
+                        icon: 'el-icon-folder',
+                        index: 'productManege',
+                        title: '产品管理',
+                        role: ['erp_v:yw'],
+                        subs: [
+                            {
+                                index: 'productList',
+                                title: '产品目录'
+                            },
+                            {
+                                index: 'quotation',
+                                title: '报价单'
+                            }
+                        ]
+                    }
+                ],
+                publicMenu:[
+                    {
+                        icon: 'el-icon-lx-home',
+                        index: 'console',
+                        title: '工作台'
+                    }
+                ],
                 collapse: false,
-                 items: [
-                {
-                    icon: 'el-icon-lx-home',
-                    index: 'console',
-                    title: '工作台'
-                },
-                {
-                    icon: 'el-icon-rank',
-                    index: 'saleManagement',
-                    title: '销售管理',
-                    subs: [
-                        {
-                            index: 'orderInform',
-                            title: '预期订单通知'
-                        },
-                        {
-                            index: 'applyForm',
-                            title: '计板移仓申请单'
-                        },
-                        {
-                            index: 'saleStats',
-                            title: '销售统计'
-                        }
-                    ]
-                },
-                {
-                    icon: 'el-icon-folder',
-                    index: 'productManege',
-                    title: '产品管理',
-                    subs: [
-                        {
-                            index: 'productList',
-                            title: '产品目录'
-                        },
-                        {
-                            index: 'quotation',
-                            title: '报价单',
-                        }
-                    ]
-                }
-            ]
+                items:[]
             };
         },
         computed: {
             onRoutes() {
                 return this.$route.path.replace('/', '');
+            },
+            selectMenu() {
+                return true
             }
-
         },
         created() {
             bus.$on('collapse', msg => {
                 this.collapse = msg;
                 bus.$emit('collapse-content', msg);
-            });
-            
+            });     
         }
     };
 </script>
