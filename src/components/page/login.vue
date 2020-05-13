@@ -30,7 +30,9 @@
 </template>
 
 <script>
-import {doLogin} from '../../api/login.js'
+//import {doLogin} from '../../api/login.js'
+
+import axios from 'axios';
 
 export default {
     data: function() {
@@ -47,33 +49,17 @@ export default {
     },
     methods: {
         submitForm() {
-                window.console.log('im in ')
-
-
-            // // 获取ref注册的引用信息
-            // this.$refs.login.validate(valid => {
-            //     if (valid) {
-            //         this.$message.success('登录成功');
-            //         localStorage.setItem('ms_username', this.param.username);
-            //         this.$router.push('/');
-            //     } else {
-            //         this.$message.error('请输入账号和密码');
-            //         return false;
-            //     }
-            // });
-            doLogin(this.username, this.password).then(res => {
-                window.console.log(res)
-            if (res.data.resultCode === 200) {
-                const token = 'token'
-                // Message.success('登录成功')
-                // 存储token到浏览器
-                localStorage.setItem('eleToken', token)
-                this.$router.push('/')
-            } else {
-                // Message.error(res.data.resultMsg)
-                // console.log('错误')
-            }
-          })
+            var options = {
+                'headers': {
+                    'Cookie': 'AUTHSESSION=7C618E066B2C7B2702E012583789DD94'
+                }
+            };
+            axios.get("/api/quanxian/",options).then((res) => {
+                    res = res.data
+                    window.console.log(res)
+                }).catch((error) => {
+                    window.console.warn(error)
+                })
         },
     },
 };

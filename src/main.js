@@ -7,21 +7,25 @@ import router from './router'
 import store from './store/store'
 
 
+import axios from 'axios'
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = '/api'
+
 Vue.use(ElementUI, {
     size: 'small'
 });
 
 Vue.config.productionTip = false;
 
-router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title}`;
-    const role = localStorage.getItem('ms_username');
-    if (!role && to.path !== '/login') {
-        next('/login');
-    } else {
-      next()
-    }
-});
+// router.beforeEach((to, from, next) => {
+//     document.title = `${to.meta.title}`;
+//     const role = localStorage.getItem('ms_username');
+//     if (!role && to.path !== '/login') {
+//         next('/login');
+//     } else {
+//       next()
+//     }
+// });
 // router.beforeEach((to, from, next) => {
 //     if (store.getters.token) { // 判断是否有token
 //       if (to.path === '/login') {
