@@ -2,21 +2,19 @@
     <div class="login-wrap">
         <div class="ms-login">
             <div class="ms-title">北江纺织后台管理系统</div>
-            <!-- model：表单数据对象，rules：表单验证规则，ref：给元素或子组件注册引用信息 -->
             <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.username" placeholder="username">
                         <el-button slot="prepend" icon="el-icon-s-custom"></el-button>
                     </el-input>
                 </el-form-item>
-                <!-- 密码表单 -->
                 <el-form-item prop="password">
                     <el-input
                         type="password"
                         placeholder="password"
                         v-model="param.password"
                         @keyup.enter.native="submitForm()"
-                    ><!--  .native - 主要是给自定义的组件添加原生事件 -->
+                    >
                         <el-button slot="prepend" icon="el-icon-key"></el-button>
                     </el-input>
                 </el-form-item>
@@ -31,7 +29,6 @@
 
 <script>
 //import {doLogin} from '../../api/login.js'
-
 
 export default {
     data: function() {
@@ -55,9 +52,10 @@ export default {
             //     }).catch((error) => {
             //         window.console.warn(error)
             //     })
+            
             window.location.href = 'http://120.78.186.60:8087/oauth/authorize?client_id=erp_v&redirect_uri=http://192.168.137.98:8080&response_type=code&state=123'
-        },
-        
+
+        },    
     },
 };
 </script>

@@ -11,11 +11,23 @@ import axios from 'axios'
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = '/api'
 
+import config from '../vue.config'
+import token from './utils/token'
+import login from './utils/loginUtils'
+import querystring from 'querystring'
+
 Vue.use(ElementUI, {
     size: 'small'
 });
 
 Vue.config.productionTip = false;
+Vue.prototype.$ajax = axios;
+Vue.prototype.$config = config;
+Vue.prototype.$token = token;
+Vue.prototype.$login = login;
+Vue.prototype.$querystring = querystring;
+
+axios.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
 
 // router.beforeEach((to, from, next) => {
 //     document.title = `${to.meta.title}`;

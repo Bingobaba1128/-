@@ -1,21 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/page/login.vue'
+//import Login from '../components/page/login.vue'
 const Home = resolve => require(['../components/page/Home.vue'], resolve);
+import ssoLogin from '../components/page/ssologin.vue'
+import ssoIndex from '../components/page/ssoIndex.vue'
 
 
 Vue.use(VueRouter);
 
 export const constantRouterMap = [
     {
-        path: '/',
-        component: Home,
-        meta: { title: '系统主页' }
+        path:'/',
+        component: ssoIndex,
+        meta: { title: 'index' }
     },
     {
         path: '/login',
-        component: Login,
+        component: ssoLogin,
         meta: { title: 'Login' }
+        
+    },
+
+    {
+        path: '/home',
+        component: Home,
+        meta: { title: '系统主页' }
     }
 ]
 
