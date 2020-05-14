@@ -32,7 +32,6 @@
 <script>
 //import {doLogin} from '../../api/login.js'
 
-import axios from 'axios';
 
 export default {
     data: function() {
@@ -49,15 +48,14 @@ export default {
     },
     methods: {
         submitForm() {
-            var options = {
-                access_token:'beef822d-2e61-40b6-aff5-7f0a824735f2'
-            };
-            axios.get("/api/supplier/yuanSha?pageIndex=1&pageSize=20",options).then((res) => {
-                    res = res.data
-                    window.console.log(res)
-                }).catch((error) => {
-                    window.console.warn(error)
-                })
+            // var token = 'beef822d-2e61-40b6-aff5-7f0a824735f2'       
+            // doLogin(token).then((res) => {
+            //         res = res.data
+            //         window.console.log(res)
+            //     }).catch((error) => {
+            //         window.console.warn(error)
+            //     })
+            window.location.href = 'http://120.78.186.60:8087/oauth/authorize?client_id=erp_v&redirect_uri=http://192.168.137.98:8080&response_type=code&state=123'
         },
         
     },

@@ -1,16 +1,14 @@
 import request from '@/utils/request'
 import qs from 'qs'
+import axios from 'axios'
 
 export function doLogin (token) {
   let data = {
-    'access_token' :token
+    access_token :token
   }
+  
   data = qs.stringify(data)
-  return request({
-    url: '/api/supplier/yuanSha?pageIndex=1&pageSize=20',
-    method: 'get',
-    data
-  })
+  return axios.get("/api/supplier/yuanSha?pageIndex=1&pageSize=20",data)
 }
 
 export function testGet() {
