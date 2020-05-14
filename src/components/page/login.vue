@@ -50,17 +50,16 @@ export default {
     methods: {
         submitForm() {
             var options = {
-                'headers': {
-                    'Cookie': 'AUTHSESSION=7C618E066B2C7B2702E012583789DD94'
-                }
+                access_token:'beef822d-2e61-40b6-aff5-7f0a824735f2'
             };
-            axios.get("/api/quanxian/",options).then((res) => {
+            axios.get("/api/supplier/yuanSha?pageIndex=1&pageSize=20",options).then((res) => {
                     res = res.data
                     window.console.log(res)
                 }).catch((error) => {
                     window.console.warn(error)
                 })
         },
+        
     },
 };
 </script>

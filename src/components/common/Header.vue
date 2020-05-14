@@ -10,7 +10,9 @@
             </div>
             <div class="expanded" v-show="showSublist">
                 <div class="system-list">
-                    成衣系统
+                    <a href="http://120.78.186.60:8081/" target="_blank">
+                        <el-dropdown-item>成衣系统</el-dropdown-item>
+                    </a>
                 </div>
                 <div class="system-list">
                     服装设计系统
@@ -18,9 +20,9 @@
                 <div class="system-list">
                     人资管理系统
                 </div>
-                <div class="system-list">
-                    财务管理
-                </div>
+                <a href="http://120.78.186.60:8080/caiwu/login" target="_blank">
+                    <el-dropdown-item>财务管理</el-dropdown-item>
+                </a>
             </div>
             
             
