@@ -1,14 +1,14 @@
-import axios from 'axios'
-import {
-  Message,
-  Loading
-} from 'element-ui'
-import router from '../router/index.js'  //注意路径与文件名
+// import axios from 'axios'
+// import {
+//   Message,
+//   Loading
+// } from 'element-ui'
+// import router from '../router/index.js'  //注意路径与文件名
 
-const service = axios.create({
-  baseURL: process.env.API, // api 的 base_url
-  timeout: 50000 // request timeout
-})
+// const service = axios.create({
+//   baseURL: process.env.API, // api 的 base_url
+//   timeout: 50000 // request timeout
+// })
 
 // let loading // 定义loading变量
 
@@ -64,4 +64,4 @@ const service = axios.create({
 //   }
 // )
 
-export default service
+// export default service

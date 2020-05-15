@@ -9,9 +9,9 @@ import store from './store/store'
 
 import axios from 'axios'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = '/'
 
-import config from '../vue.config'
+import config from './config/config'
 import token from './utils/token'
 import login from './utils/loginUtils'
 import querystring from 'querystring'

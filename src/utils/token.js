@@ -23,6 +23,20 @@ var token={
       tokenInfo.token_type=sessionStorage.getItem("token_type");
       return tokenInfo;
     },
+    // getTokenFromService:function (vue,code,callback,error) {
+    //   window.console.log('start to get the token')
+    //   vue.$ajax.post(vue.$config.accessTokenUri,{
+    //     client_id:vue.$config.clientId,
+    //     client_secret:vue.$config.client_secret,
+    //     code:code,
+    //     redirect_uri:vue.$config.redirect_uri,
+    //     grant_type:vue.$config.grant_type
+    //   }).then(window.console.log(callback))
+    //     .then(callback)
+    //     .catch(error);
+    //   window.console.log('finish to get the token')
+
+    // }
     getTokenFromService:function (vue,code,callback,error) {
       vue.$ajax.post(vue.$config.accessTokenUri,{
         client_id:vue.$config.clientId,

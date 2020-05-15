@@ -20,49 +20,28 @@ module.exports = {
     devServer: {
       open: process.platform === "darwin",
       disableHostCheck: false,
-      host: "localhost",
+      host: "0.0.0.0",
       port: 8080,
       https: false,
       hotOnly: false,
-      // proxy: {
-      //   '/api/': {
-      //       target:'http://120.78.186.60:8086', // 你请求的第三方接口
-      //       changeOrigin:true,
-      //       pathRewrite:{  // 路径重写，
-      //         '^/api/': ''  
-      //       }
-      //     }
-      // }
+      proxy: {
+        // '/api': {
+        //     target:'http://120.78.186.60:8086', // 你请求的第三方接口
+        //     changeOrigin:true,
+        //     pathRewrite:{  // 路径重写，
+        //       '^/api': ''  
+        //     }
+        //   }
+        '/github': {
+            target:'https://github.com', // 你请求的第三方接口
+            changeOrigin:true,
+            pathRewrite:{  // 路径重写，
+              '^/github': '/'  
+            }
+          }
+      }
     }, 
   
     pluginOptions: {
-    },
-
-    // config :{
-    //   //请求授权地址
-    //   userAuthorizationUri:"http://120.78.186.60:8087/oauth/authorize",
-    //   //accessToken请求地址
-    //   accessTokenUri : "https://github.com/login/oauth/access_token",
-    //   //用户信息请求地址
-    //   userInfoUri:"https://api.github.com/user",
-    //   //登出请求地址
-    //   logoutUri:"https://github.com/logout",
-    //   //项目地址
-    //   localuri :"http://localhost:9999",
-    //  //回调地址
-    //   redirect_uri : "http://192.168.137.98:8080",
-    //   //案例资源服务器地址
-    //   resUri:"http://localhost:8080",
-    //   //客户端相关标识，请从认证服务器申请
-    //   clientId: "erp_v",
-    //   client_secret:"",
-    //   //申请的权限范围
-    //   scope:"",
-    //   //可选参数，客户端的当前状态，可以指定任意值，用于校验，此次案例不做相关认证
-    //   state:"",
-    //   //一些固定的请求参数
-    //   response_type:"code",
-    //   grant_type : "authorization_code",
-    //   code:"",
-    // }
+    }
   };
