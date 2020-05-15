@@ -38,6 +38,7 @@ var token={
 
     // }
     getTokenFromService:function (vue,code,callback,error) {
+      window.console.log('prepare token get')
       vue.$ajax.post(vue.$config.accessTokenUri,{
         client_id:vue.$config.clientId,
         client_secret:vue.$config.client_secret,
@@ -49,6 +50,8 @@ var token={
       })
         .then(callback)
         .catch(error);
+        window.console.log('finish token get')
+
     }
   }
   

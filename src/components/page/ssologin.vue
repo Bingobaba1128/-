@@ -53,6 +53,7 @@ export default {
   mounted:function () {
     this.code = this.$route.query.code;
     this.state = this.$route.query.state;
+    window.console.log('before token get')
     this.getToken();
   }
 }

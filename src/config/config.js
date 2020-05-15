@@ -17,7 +17,7 @@ var config={
     //请求授权地址
     userAuthorizationUri:"https://github.com/login/oauth/authorize",
     //accessToken请求地址
-    accessTokenUri : "https://github.com/login/oauth/access_token",
+    accessTokenUri : "/github/login/oauth/access_token",
     //用户信息请求地址
     userInfoUri:"https://api.github.com/user",
     //登出请求地址
