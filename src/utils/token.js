@@ -23,35 +23,14 @@ var token={
       tokenInfo.token_type=sessionStorage.getItem("token_type");
       return tokenInfo;
     },
-    // getTokenFromService:function (vue,code,callback,error) {
-    //   window.console.log('start to get the token')
-    //   vue.$ajax.post(vue.$config.accessTokenUri,{
-    //     client_id:vue.$config.clientId,
-    //     client_secret:vue.$config.client_secret,
-    //     code:code,
-    //     redirect_uri:vue.$config.redirect_uri,
-    //     grant_type:vue.$config.grant_type
-    //   }).then(window.console.log(callback))
-    //     .then(callback)
-    //     .catch(error);
-    //   window.console.log('finish to get the token')
 
-    // }
-    getTokenFromService:function (vue,code,callback,error) {
-      window.console.log('prepare token get')
-      vue.$ajax.post(vue.$config.accessTokenUri,{
-        client_id:vue.$config.clientId,
-        client_secret:vue.$config.client_secret,
-        code:code,
-        redirect_uri:vue.$config.redirect_uri,
-        grant_type:vue.$config.grant_type
-      },{
-        headers:{"Accept":"application/json"}
+    getTokenFromService:function (vue,code,response,error) {
+      vue.$ajax.post("http://120.78.186.60:8087/oauth/token?grant_type=authorization_code&client_id=erp_v&client_secret=erpVietnam&redirect_uri=http://127.0.0.1:8080/login&code=" + code
+      ,{
+        headers:{"Content-Type":"text/plain"}
       })
-        .then(callback)
-        .catch(error);
-        window.console.log('finish token get')
-
+      .then(response)
+      .catch(error);
     }
   }
   

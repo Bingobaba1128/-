@@ -49,16 +49,16 @@
 
 // vue.config.js
 module.exports = {
-  baseUrl: '/',
   devServer: {
-      proxy: {
-        '/github': {
-            target:'https://github.com', // 你请求的第三方接口
-            changeOrigin:true,
-            pathRewrite:{  // 路径重写，
-              '^/github': '/'  
-            }
-      }
-  }
+    host: "127.0.0.1",
+  //     proxy: {
+  //       '/api': {
+  //           target:'http://120.78.186.60:8087', // 你请求的第三方接口
+  //           changeOrigin:true,
+  //           // pathRewrite:{  // 路径重写，
+  //           //   '^/api': ''  
+  //           // }
+  //     } 
+  // }
 }
 }

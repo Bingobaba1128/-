@@ -28,17 +28,16 @@
 
 // export default loginUtil;
 
-import RndNum from "./ranNum";
+//import RndNum from "./ranNum";
 //var querystring = require('querystring')
 var loginUtil ={
   login:function (vue) {
-    vue.$config.code = RndNum(4);
+    vue.$config.code = '123';
     var authorUrl = vue.$config.userAuthorizationUri;
     authorUrl = authorUrl + ('?' + vue.$querystring.stringify({
       client_id:vue.$config.clientId,
       response_type:vue.$config.response_type,
-      scope:vue.$config.scope,
-      state:vue.$config.state,
+      state:vue.$config.code,
       redirect_uri:vue.$config.redirect_uri, 
     }))
     window.location.href = authorUrl;

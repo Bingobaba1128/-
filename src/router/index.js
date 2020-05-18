@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 const Home = resolve => require(['../components/page/Home.vue'], resolve);
 import ssoLogin from '../components/page/ssologin.vue'
 import ssoIndex from '../components/page/ssoIndex.vue'
+import user from  '../components/page/userIndex.vue';
 
 
 Vue.use(VueRouter);
@@ -25,7 +26,12 @@ export const constantRouterMap = [
         path: '/home',
         component: Home,
         meta: { title: '系统主页' }
-    }
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: user
+      },
 ]
 
 export default new VueRouter ({

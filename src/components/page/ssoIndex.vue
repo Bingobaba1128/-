@@ -23,9 +23,7 @@ export default {
       this.$login.login(this);
     },
     logout:function () {
-      // this.$login.logout(this,"http://localhost:8081"+"/");
-            this.$login.logout(this,"http://192.168.137.98:8080"+"/");
-
+            this.$login.logout(this,"http://127.0.0.1:8080"+"/");
     }
   },
   mounted:function () {

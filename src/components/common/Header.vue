@@ -36,8 +36,20 @@
 
                 <el-dropdown class="user-name">
                     <span class="el-dropdown-link">
-                        Admin
+                        用户名
+                    </span>
+                </el-dropdown>
+
+                <el-dropdown class="user-name" trigger="hover">
+                    <span class="el-dropdown-link">
+                        切换公司
                         <i class="el-icon-caret-bottom"></i>
+                        <el-dropdown-menu slot="dropdown" class="user-dropdown">
+                            <el-dropdown-item v-for="(company,index) in companyList" :key="index" :command="company" >
+                                <span style="display:block;" @click="d">{{company.name}}</span>
+                            </el-dropdown-item>
+
+                        </el-dropdown-menu>
                     </span>
                 </el-dropdown>
 
@@ -66,17 +78,28 @@
             return {
                 collapse: false,
                 name: 'Admin',
-                showSublist: false
+                showSublist: false,
+                companyList: [
+                    {name: '公司A',ID: '110'},
+                    {name: '公司B',ID: '111'},
+                    {name: '公司C',ID: '112'},
+                ]
             };
         },
 
-         methods: {
+        methods: {
              collapseChage() {
                 this.collapse = !this.collapse;
                 bus.$emit('collapse', this.collapse);
                 this.showSublist = !this.showSublist;
             }
-         }
+        },
+
+        mounted: function() {
+            // this.axios.post("").then(res => {
+            //     this.companyList=res.data;
+            // });
+        }
     }
 </script>
 
