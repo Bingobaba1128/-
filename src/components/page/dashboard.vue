@@ -46,6 +46,7 @@
 
             <el-col :span="8">
                 <div class="grid-content">
+                    
                 </div>
             </el-col>
         </el-row>
@@ -115,4 +116,15 @@
     display:flex
 }
 
+.iframe {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow-y: hidden;
+}
 </style>

@@ -5,6 +5,7 @@ const Home = resolve => require(['../components/page/Home.vue'], resolve);
 import ssoLogin from '../components/page/ssologin.vue'
 import ssoIndex from '../components/page/ssoIndex.vue'
 import user from  '../components/page/userIndex.vue';
+import sale from '../components/page/sale.vue'
 
 
 Vue.use(VueRouter);
@@ -32,6 +33,12 @@ export const constantRouterMap = [
         name: 'user',
         component: user
       },
+
+    {
+        path: '/sale',
+        name: 'sale',
+        component: sale
+    }
 ]
 
 export default new VueRouter ({

@@ -1,3 +1,5 @@
+import { getToken } from '../api/api'
+
 var token={
     savetoken :function (token) {
       sessionStorage.setItem("access_token",token.access_token);
@@ -25,10 +27,7 @@ var token={
     },
 
     getTokenFromService:function (vue,code,response,error) {
-      vue.$ajax.post("http://120.78.186.60:8087/oauth/token?grant_type=authorization_code&client_id=erp_v&client_secret=erpVietnam&redirect_uri=http://127.0.0.1:8080/login&code=" + code
-      ,{
-        headers:{"Content-Type":"text/plain"}
-      })
+      getToken(code,vue.$ajax)
       .then(response)
       .catch(error);
     }

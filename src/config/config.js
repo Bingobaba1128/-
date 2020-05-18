@@ -19,9 +19,9 @@ var config={
     userAuthorizationUri:"http://120.78.186.60:8087/oauth/authorize",
     //accessToken请求地址
     // accessTokenUri : "/github/login/oauth/access_token",
-    accessTokenUri : "/api/oauth/token",
+    // accessTokenUri : "/api/oauth/token",
     //用户信息请求地址
-    userInfoUri:"",
+    userInfoUri:"http://120.78.186.60:8087/user",
     //登出请求地址
     logoutUri:"",
     //项目地址

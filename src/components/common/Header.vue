@@ -14,8 +14,9 @@
                         <el-dropdown-item>成衣系统</el-dropdown-item>
                     </a>
                 </div>
-                <div class="system-list">
-                    服装设计系统
+                <div class="system-list" >
+
+                    销售管理系统
                 </div>
                 <div class="system-list">
                     人资管理系统
@@ -34,19 +35,20 @@
                     <div class="el-icon-s-custom"></div>
                 </div>
 
+
                 <el-dropdown class="user-name">
                     <span class="el-dropdown-link">
-                        用户名
+                        {{ user.nickname }}
                     </span>
                 </el-dropdown>
 
-                <el-dropdown class="user-name" trigger="hover">
+                <el-dropdown class="user-name" trigger="click">
                     <span class="el-dropdown-link">
                         切换公司
                         <i class="el-icon-caret-bottom"></i>
                         <el-dropdown-menu slot="dropdown" class="user-dropdown">
                             <el-dropdown-item v-for="(company,index) in companyList" :key="index" :command="company" >
-                                <span style="display:block;" @click="d">{{company.name}}</span>
+                                <span style="display:block;" @click="clickme">{{company.name}}</span>
                             </el-dropdown-item>
 
                         </el-dropdown-menu>
@@ -60,7 +62,7 @@
                     <span class="btn-message-badge">消息</span>
                 </div>
 
-                <div class="btn-logout">
+                <div class="btn-logout" @click="userLogout">
                     <i class="el-icon-switch-button"></i>
                     <span>退出</span>
                 </div>
@@ -72,6 +74,7 @@
 
 <script>
     import bus from '../../utils/bus';
+    import * as api from '../../api/api.js'
 
     export default {
         data() {
@@ -83,7 +86,12 @@
                     {name: '公司A',ID: '110'},
                     {name: '公司B',ID: '111'},
                     {name: '公司C',ID: '112'},
-                ]
+                ],
+                user: {
+                    id:'',
+                    nickname:'',
+                    authorities:''
+                }
             };
         },
 
@@ -92,13 +100,26 @@
                 this.collapse = !this.collapse;
                 bus.$emit('collapse', this.collapse);
                 this.showSublist = !this.showSublist;
+            },
+            clickme() {
+                window.console.log('ooop!!')
+            },
+            userLogout() {
+                this.$token.deleteToken();
+                var logouturi = "http://127.0.0.1:8080/login";
+                
+                window.location.href = logouturi;
+                this.$router.push('/login')
             }
+            
         },
 
         mounted: function() {
-            // this.axios.post("").then(res => {
-            //     this.companyList=res.data;
-            // });
+            api.getUserInfo(this.$token.loadToken(),this.$ajax)
+                .then(res => {
+                    this.user = res.data;
+                    this.nickname = this.user.nickname
+                });
         }
     }
 </script>
@@ -184,6 +205,8 @@
 
     .btn-logout {
         margin: 0 10px;
+                cursor: pointer;
+
     }
 
     .el-icon-s-fold {
