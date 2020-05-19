@@ -22,7 +22,6 @@ export const constantRouterMap = [
         meta: { title: 'Login' }
         
     },
-
     {
         path: '/home',
         component: Home,
@@ -32,10 +31,10 @@ export const constantRouterMap = [
         path: '/user',
         name: 'user',
         component: user
-      },
+    },
 
     {
-        path: '/sale',
+        path: '/saleSystem',
         name: 'sale',
         component: sale
     }

@@ -5,25 +5,19 @@
                 <i v-if="!collapse" class="el-icon-s-unfold"></i>         
                 <i v-else class="el-icon-s-fold"></i>  
             </div>
-            <div class="root system-list">
-                面料系统
+            <div class="root">
+                系统选择
             </div>
             <div class="expanded" v-show="showSublist">
-                <div class="system-list">
-                    <a href="http://120.78.186.60:8081/" target="_blank">
-                        <el-dropdown-item>成衣系统</el-dropdown-item>
-                    </a>
+                <div class="system-list" 
+                    v-for="(item, index) in nav"
+                    :key="index"
+                    @click="routerLink(index, item.path,item.redirect)">
+                    <p :class="navIndex === index ? 'active' : ''">
+                        {{ item.title }}
+                    </p>
                 </div>
-                <div class="system-list" >
-
-                    销售管理系统
-                </div>
-                <div class="system-list">
-                    人资管理系统
-                </div>
-                <a href="http://120.78.186.60:8080/caiwu/login" target="_blank">
-                    <el-dropdown-item>财务管理</el-dropdown-item>
-                </a>
+                
             </div>
             
             
@@ -91,7 +85,14 @@
                     id:'',
                     nickname:'',
                     authorities:''
-                }
+                },
+                nav: [
+                    {title:'成衣系统',redirect:'http://120.78.186.60:8081'},
+                    {title:'销售系统',path:'/saleSystem'},
+                    {title:'人资管理系统',path:'/HrManagement'},
+                    {title:'财务系统',redirect:'http://120.78.186.60:8080/caiwu/login'}
+                ],
+                navIndex: -1 
             };
         },
 
@@ -110,8 +111,26 @@
                 
                 window.location.href = logouturi;
                 this.$router.push('/login')
+            },
+            routerLink(index, path,redirect) {
+                this.navIndex = index;
+                if(path){
+                   this.$router.push(path) 
+                } 
+                if (redirect) {
+                    window.location.href = redirect
+                }
+                
+            },
+            checkRouterLocal(path) {
+                this.navIndex = this.nav.findIndex(item => item.path === path);
             }
-            
+        },
+        watch: {
+            "$route"() {
+                let path = this.$route.path;
+                this.checkRouterLocal(path);
+            }
         },
 
         mounted: function() {
@@ -127,7 +146,6 @@
 <style scoped>
     .header {
         position: relative;
-        box-sizing: border-box;
         width: 100%;
         height: 70px;
         font-size: 22px;
@@ -164,10 +182,18 @@
     }
     .root {
         order: 1;
+                padding:20px 6px;
+
     }
 
     .system-list {
         padding:20px 6px;
+        cursor: pointer;
+    }
+    .system-list :hover {
+        background-color: #409eff;
+        border: 1px solid #dcdfe6;
+        transform: translateY(5px)
     }
 
     .btn-message {
@@ -205,11 +231,13 @@
 
     .btn-logout {
         margin: 0 10px;
-                cursor: pointer;
+        cursor: pointer;
 
     }
 
     .el-icon-s-fold {
         transform: translateX(500px)
     }
+
+    .active{color:red;}
 </style>
