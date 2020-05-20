@@ -6,18 +6,31 @@ Vue.use(Vuex)
 const store = new Vuex.Store ({
 
   state: {
-    date: new Date()
+    user: '',
+    company: ''
   },
 
   getters: {
-    weekDate: state => {
-      return (state.date).format('dddd')
-    }
+    
   },
 
   mutations: {
-    imcrement (state,n) {
-      state.count += n
+    addUserInfo(state,info) {
+      state.user = info
+    },
+    getCompany(state){
+      state.user.authorities.map( (item,index) => {
+        window.console.log(item,index)
+      })      
+    } 
+  },
+
+  actions: {
+    addUser (context,info){
+      context.commit("addUserInfo",info)
+    },
+    getCompanyList(context){
+      context.commit("getCompany")
     }
   }
 

@@ -7,6 +7,7 @@
             </div>
             <div class="root">
                 系统选择
+                
             </div>
             <div class="expanded" v-show="showSublist">
                 <div class="system-list" 
@@ -137,8 +138,10 @@
             api.getUserInfo(this.$token.loadToken(),this.$ajax)
                 .then(res => {
                     this.user = res.data;
+                    this.$store.dispatch("addUser",this.user)
                     this.nickname = this.user.nickname
                 });
+            this.$store.dispatch("getCompanyList")
         }
     }
 </script>
